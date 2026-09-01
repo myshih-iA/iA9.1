@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iAutonomy, Inc. | More Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { slate: { 900: '#1A2026' }, teal: { 500: '#3A8E9E' } }, 
+                    fontFamily: { 
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'SF Pro Text', 'Segoe UI', 'sans-serif'], 
+                        mono: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'SF Pro Text', 'Segoe UI', 'sans-serif'] 
+                    } 
+                } 
+            } 
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Staggered Fade-In Classes with Incremental Delays */
+        .fade-in-1, .fade-in-2, .fade-in-3, .fade-in-4, .fade-in-5,
+        .fade-in-6, .fade-in-7, .fade-in-8, .fade-in-9, .fade-in-10 { 
+            animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            opacity: 0; 
+        }
+
+        .fade-in-1  { animation-delay: 0.0s; }
+        .fade-in-2  { animation-delay: 0.1s; }
+        .fade-in-3  { animation-delay: 0.2s; }
+        .fade-in-4  { animation-delay: 0.3s; }
+        .fade-in-5  { animation-delay: 0.4s; }
+        .fade-in-6  { animation-delay: 0.5s; }
+        .fade-in-7  { animation-delay: 0.6s; }
+        .fade-in-8  { animation-delay: 0.7s; }
+        .fade-in-9  { animation-delay: 0.8s; }
+        .fade-in-10 { animation-delay: 0.9s; }
+
+        /* Ultra-Smooth Up & Down Hover Transition */
+        .hover-slide {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            transform: translateY(0);
+            will-change: transform;
+        }
+        .hover-slide:hover {
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-200 font-sans antialiased relative overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Interactive Canvas Background -->
+    <canvas id="wave-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-80"></canvas>
+
+    <!-- Navigation Header (More Info Page Active) -->
+    <nav class="fade-in-1 border-b-2 border-teal-500 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 font-sans">
+        <div class="max-w-[90rem] mx-auto px-2 sm:px-4">
+            <div class="relative flex items-center h-20">
+                
+                <!-- Logo -->
+                <a href="index.html" class="hover-slide absolute left-0 flex-shrink-0 flex items-center pr-1 sm:pr-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <img src="iALogo.svg" alt="iA Logo" class="h-10 sm:h-12 w-auto">
+                </a>
+
+                <!-- Centered Single-Line Navigation Links -->
+                <div class="flex items-center justify-center mx-auto gap-2 sm:gap-3 font-sans whitespace-nowrap">
+                    <a href="index.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Home</a>
+                    <a href="about.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">About</a>
+                    <a href="marketplace.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Trusted Marketplace</a>
+                    <a href="ops.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Ops+</a>
+                    <a href="automation.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Automation &amp; Production</a>
+                    <a href="team.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">The Team</a>
+                    <a href="more-info.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-500 bg-slate-800/80 rounded text-center">More Info</a>
+                    <a href="contact.html" class="hover-slide px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-500 hover:text-white border border-teal-500 hover:bg-teal-500 rounded text-center">Contact</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 flex-grow space-y-16">
+        
+        <!-- Hero Header -->
+        <header class="fade-in-2 border-b border-gray-800 pb-12 bg-slate-900/60 backdrop-blur-sm p-8">
+            <span class="text-teal-500 text-sm font-bold uppercase tracking-widest block mb-2">// Resources &amp; Media • Updated August 26, 2026</span>
+            <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight uppercase leading-none mb-6">
+                More Information
+            </h1>
+            <p class="text-xl sm:text-2xl font-bold text-teal-500 uppercase tracking-wide leading-snug mb-6">
+                White Papers, Research, &amp; Official News Releases
+            </p>
+            <p class="text-lg text-gray-200 leading-relaxed max-w-4xl border-l-4 border-teal-500 pl-4 py-1">
+                Access technical documentation on our scalable autonomous production frameworks, or stay updated with the latest company updates and press releases from iAutonomy, Inc.
+            </p>
+        </header>
+
+        <!-- Side-by-Side 2-Column Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+
+            <!-- Column 1: Technical Papers / Download Gate -->
+            <div class="border border-teal-500/40 bg-slate-900/90 p-8 backdrop-blur-md space-y-6 flex flex-col justify-between">
+                <div>
+                    <div class="fade-in-3 border-b border-gray-800 pb-4 mb-6">
+                        <span class="text-teal-500 text-sm font-bold uppercase tracking-widest block mb-1">[ 01 ] Technical Papers</span>
+                        <h2 class="text-2xl font-extrabold text-white uppercase tracking-tight">Capabilities &amp; Overview Downloads</h2>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- English 2-Pager Briefing -->
+                        <div class="hover-slide fade-in-4 border border-gray-800 bg-slate-900/80 p-6 hover:border-teal-500/50">
+                            <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block mb-2">Capabilities Briefing • English</span>
+                            <h3 class="text-xl font-bold text-white uppercase mb-3">Trusted Service Infrastructure for the UxV Ecosystem</h3>
+                            <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                                An overview of iA’s supplier-agnostic operating system for non-PRC uncrewed systems. Details our multi-layer solution stack—Operations &amp; Logistics, Trusted Marketplace, Financial Layer, Market Intelligence, and AI Data Spine—alongside our integrated 4R Lifecycle Sustainment Model (Repair, Replace, Refurbish, Recycle).
+                            </p>
+                            <a href="contact.html?doc=eng" class="inline-flex items-center gap-2 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                Request PDF Access (ENG)
+                            </a>
+                        </div>
+
+                        <!-- Traditional Chinese 2-Pager Briefing -->
+                        <div class="hover-slide fade-in-5 border border-gray-800 bg-slate-900/80 p-6 hover:border-teal-500/50">
+                            <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block mb-2">Capabilities Briefing • 繁體中文</span>
+                            <h3 class="text-xl font-bold text-white uppercase mb-3">iA：可信任 UxV 生態系的服務基礎設施</h3>
+                            <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                                深入說明 iA 作為不偏向特定供應商的工業基礎設施定位，解決無人系統（UxV）供應鏈高風險與去中國化需求。內容涵蓋五大核心架構：營運與物流、精選 Marketplace、深層金融交易、市場情報與 AI 原生 Data Spine，以及 4R 全生命週期維護支援。
+                            </p>
+                            <a href="contact.html?doc=tw" class="inline-flex items-center gap-2 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                Request PDF Access (TW)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-gray-800 text-xs text-gray-400">
+                    * Request the technical specification PDF by contacting operations.
+                </div>
+            </div>
+
+            <!-- Column 2: News Releases -->
+            <div class="border border-teal-500/40 bg-slate-900/90 p-8 backdrop-blur-md space-y-6 flex flex-col justify-between">
+                <div>
+                    <div class="fade-in-3 border-b border-gray-800 pb-4 mb-6 flex justify-between items-end">
+                        <div>
+                            <span class="text-teal-500 text-sm font-bold uppercase tracking-widest block mb-1">[ 02 ] Press &amp; Announcements</span>
+                            <h2 class="text-2xl font-extrabold text-white uppercase tracking-tight">News Releases</h2>
+                        </div>
+                        <span class="text-xs text-gray-400 font-mono">2 Articles</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        
+                        <!-- News Release 1: Rebrand to iA -->
+                        <div x-data="{ open: false, lang: 'en' }" class="fade-in-4 border border-gray-800 bg-slate-900/80 p-6 hover:border-teal-500/50 transition-colors">
+                            <div class="flex justify-between items-start gap-4 mb-2">
+                                <span class="text-xs text-teal-500 font-bold uppercase tracking-widest">News Release • September 1, 2026</span>
+                                <!-- Language Toggle -->
+                                <div class="flex items-center bg-slate-800 p-0.5 rounded text-[10px] font-bold uppercase border border-gray-700">
+                                    <button @click="lang = 'en'" :class="lang === 'en' ? 'bg-teal-500 text-white' : 'text-gray-400 hover:text-white'" class="px-2 py-0.5 rounded transition-colors">EN</button>
+                                    <button @click="lang = 'zh'" :class="lang === 'zh' ? 'bg-teal-500 text-white' : 'text-gray-400 hover:text-white'" class="px-2 py-0.5 rounded transition-colors">中文</button>
+                                </div>
+                            </div>
+
+                            <!-- English Content -->
+                            <template x-if="lang === 'en'">
+                                <div>
+                                    <h3 class="text-lg font-bold text-white uppercase leading-snug mb-2">iAutonomy Rebrands as iA, Advancing a New Strategy for Trusted Technology, Supply Chains and Global Market Execution</h3>
+                                    <p class="text-xs text-teal-400 font-semibold mb-3 uppercase tracking-wide">LOS ANGELES, CA — September 1, 2026</p>
+                                    <p class="text-sm text-gray-300 leading-relaxed mb-4">
+                                        Effective September 1, 2026, iAutonomy is now iA, introducing a new brand identity that reflects the company’s evolving business strategy, broader market focus, and long-term vision.
+                                    </p>
+                                    
+                                    <!-- Expandable Content -->
+                                    <div x-show="open" x-collapse class="space-y-3 text-sm text-gray-300 border-t border-gray-800 pt-3 mb-4 leading-relaxed">
+                                        <p>The transition to iA represents more than a name change. It reflects the company’s evolution into a U.S.-led platform and ecosystem designed to help innovative technologies and qualified suppliers move from capability to market access—and from market access to execution and scale.</p>
+                                        <p>iA is focused on bridging trusted technology and manufacturing capabilities with customers and opportunities in the United States and global markets. Its growing ecosystem brings together qualified suppliers, buyers, strategic partners, marketplace access, supply-chain diligence, logistics and RMA support, market intelligence, and AI-enabled data capabilities.</p>
+                                        <p>Taiwan remains an important part of this strategy. With world-class strengths in electronics, advanced manufacturing, aerospace, autonomous systems, communications, AI, robotics, and critical components, Taiwan offers significant capabilities to global industries seeking resilient and trusted supply chains.</p>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- Chinese Content -->
+                            <template x-if="lang === 'zh'">
+                                <div>
+                                    <h3 class="text-lg font-bold text-white uppercase leading-snug mb-2">iAutonomy 正式更名為 iA 以全新品牌推動可信任科技、供應鏈與全球市場落地</h3>
+                                    <p class="text-xs text-teal-400 font-semibold mb-3 uppercase tracking-wide">洛杉磯訊 — 2026 年 9 月 1 日</p>
+                                    <p class="text-sm text-gray-300 leading-relaxed mb-4">
+                                        自 2026 年 9 月 1 日起，iAutonomy 正式更名為 iA。全新的品牌定位反映公司業務策略、市場布局及長期發展願景的進一步轉型與拓展。
+                                    </p>
+                                    
+                                    <!-- Expandable Content -->
+                                    <div x-show="open" x-collapse class="space-y-3 text-sm text-gray-300 border-t border-gray-800 pt-3 mb-4 leading-relaxed">
+                                        <p>此次更名不只是品牌名稱的簡化，更代表 iA 正逐步發展為一個以美國為核心、協助創新技術與優質供應商從「技術與製造能力」走向「市場進入、實際落地與規模化成長」的產業平台與生態系統。</p>
+                                        <p>iA 聚焦於串聯可信任的科技與製造能力，以及美國與全球市場的實際需求。透過持續建立的合作生態系，iA 整合優質供應商、買方、策略夥伴、可信任市場導入、供應鏈盡調、物流與 RMA 支援、市場情報，以及 AI 驅動的資料能力。</p>
+                                        <p>台灣是 iA 全球策略的重要一環。台灣在電子、先進製造、航太、自主系統、通訊、AI、機器人及關鍵零組件等領域具備世界級技術與製造實力。iA 的角色，是協助合格的台灣企業將這些優勢轉化為進入美國及全球可信任市場的實際商機。</p>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <button @click="open = !open" class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-500 hover:text-teal-400 uppercase tracking-wider transition-colors">
+                                <span x-text="open ? 'Show Less' : 'Read Full Release'"></span>
+                                <svg class="w-3.5 h-3.5 transform transition-transform duration-200" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                        </div>
+
+                        <!-- News Release 2: CTMS Exhibition -->
+                        <div x-data="{ open: false, lang: 'en' }" class="fade-in-5 border border-gray-800 bg-slate-900/80 p-6 hover:border-teal-500/50 transition-colors">
+                            <div class="flex justify-between items-start gap-4 mb-2">
+                                <span class="text-xs text-teal-500 font-bold uppercase tracking-widest">News Release • September 1, 2026</span>
+                                <!-- Language Toggle -->
+                                <div class="flex items-center bg-slate-800 p-0.5 rounded text-[10px] font-bold uppercase border border-gray-700">
+                                    <button @click="lang = 'en'" :class="lang === 'en' ? 'bg-teal-500 text-white' : 'text-gray-400 hover:text-white'" class="px-2 py-0.5 rounded transition-colors">EN</button>
+                                    <button @click="lang = 'zh'" :class="lang === 'zh' ? 'bg-teal-500 text-white' : 'text-gray-400 hover:text-white'" class="px-2 py-0.5 rounded transition-colors">中文</button>
+                                </div>
+                            </div>
+
+                            <!-- English Content -->
+                            <template x-if="lang === 'en'">
+                                <div>
+                                    <h3 class="text-lg font-bold text-white uppercase leading-snug mb-2">iA to Attend 2026 Taichung AI Application &amp; Smart Manufacturing Exhibition</h3>
+                                    <p class="text-xs text-teal-400 font-semibold mb-3 uppercase tracking-wide">Los Angeles, CA — September 1, 2026</p>
+                                    <p class="text-sm text-gray-300 leading-relaxed mb-4">
+                                        iA will participate in the 2026 Taichung AI Application &amp; Smart Manufacturing Exhibition (CTMS), October 1–4, 2026, at the Taichung International Convention and Exhibition Center.
+                                    </p>
+                                    
+                                    <!-- Expandable Content -->
+                                    <div x-show="open" x-collapse class="space-y-3 text-sm text-gray-300 border-t border-gray-800 pt-3 mb-4 leading-relaxed">
+                                        <p>The event will provide an opportunity for the iA core team to meet directly with Taiwan innovators, manufacturers, qualified suppliers, customers, and ecosystem partners interested in expanding into the United States and global markets.</p>
+                                        <p>Rather than stopping at introductions, iA focuses on helping qualified companies address practical requirements of market entry—including trusted supplier onboarding, marketplace access, supply-chain diligence, and RMA support.</p>
+                                        <div class="pt-3 border-t border-gray-800/60 mt-3 space-y-2">
+                                            <div>
+                                                <a href="https://calendar.app.google/kUTqZDszmVv3PqPk6" target="_blank" rel="noopener" class="text-xs text-teal-400 hover:underline inline-flex items-center gap-1.5 font-bold uppercase tracking-wider">
+                                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                    Schedule a 1-on-1 Meeting with iA &rarr;
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="https://ctms-tc.ctee.com.tw/zh-tw/index.html" target="_blank" rel="noopener" class="text-xs text-gray-400 hover:text-teal-400 hover:underline inline-flex items-center gap-1 font-mono">
+                                                    CTMS 2026 Official Website &rarr;
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <!-- Chinese Content -->
+                            <template x-if="lang === 'zh'">
+                                <div>
+                                    <h3 class="text-lg font-bold text-white uppercase leading-snug mb-2">iA 將參加 2026 台中 AI 應用暨智慧製造展 協助台灣創新與優質供應商鏈結美國及全球市場</h3>
+                                    <p class="text-xs text-teal-400 font-semibold mb-3 uppercase tracking-wide">美國洛杉磯訊 — 2026 年 9 月 1 日</p>
+                                    <p class="text-sm text-gray-300 leading-relaxed mb-4">
+                                        iA 將於 2026 年 10 月 1 日至 4 日參加「2026 台中 AI 應用暨智慧製造展（CTMS）」，並於台中國際會展中心與台灣創新企業、製造商及產業夥伴交流。
+                                    </p>
+                                    
+                                    <!-- Expandable Content -->
+                                    <div x-show="open" x-collapse class="space-y-3 text-sm text-gray-300 border-t border-gray-800 pt-3 mb-4 leading-relaxed">
+                                        <p>展會期間，iA 核心團隊將安排一對一會議，與有意進入美國及全球市場的台灣企業深入討論市場需求、供應鏈合作及實際落地機會。</p>
+                                        <p>iA 的角色不只是商務介紹，而是進一步協助合格企業處理市場進入過程中的實際需求，包括可信任供應商導入、客戶與策略夥伴開發、市場平台對接、供應鏈盡調、物流與 RMA 支援、市場情報，以及在地化布局。</p>
+                                        <div class="pt-3 border-t border-gray-800/60 mt-3 space-y-2">
+                                            <div>
+                                                <a href="https://calendar.app.google/kUTqZDszmVv3PqPk6" target="_blank" rel="noopener" class="text-xs text-teal-400 hover:underline inline-flex items-center gap-1.5 font-bold uppercase tracking-wider">
+                                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                    預約一對一會談時間 &rarr;
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="https://ctms-tc.ctee.com.tw/zh-tw/index.html" target="_blank" rel="noopener" class="text-xs text-gray-400 hover:text-teal-400 hover:underline inline-flex items-center gap-1 font-mono">
+                                                    2026 台中 AI 應用暨智慧製造展官方網站 &rarr;
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <button @click="open = !open" class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-500 hover:text-teal-400 uppercase tracking-wider transition-colors mt-2">
+                                <span x-text="open ? 'Show Less' : 'Read Full Release'"></span>
+                                <svg class="w-3.5 h-3.5 transform transition-transform duration-200" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                        </div>
+
+                        <!-- Incoming News Box -->
+                        <div class="fade-in-6 border border-dashed border-teal-500/30 bg-slate-900/40 p-4 text-center space-y-2">
+                            <span class="text-[11px] text-teal-500 font-bold uppercase tracking-widest block font-mono">// Press Wire Active</span>
+                            <p class="text-xs text-gray-400 leading-relaxed">
+                                Additional corporate announcements, defense partnerships, and market intelligence reports are undergoing preparation for future release.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-gray-800 text-xs text-gray-400">
+                    For press and media inquiries, please reach out via our <a href="contact.html" class="text-teal-500 hover:underline">Contact Page</a>.
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Interactive Canvas Animation -->
+    <script>
+        const canvas = document.getElementById('wave-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        const gap = 32;
+        let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
+        let count = 0;
+
+        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
+        window.addEventListener('mousemove', (e) => { mouse.targetX = e.clientX; mouse.targetY = e.clientY; });
+
+        function render() {
+            mouse.x += (mouse.targetX - mouse.x) * 0.1;
+            mouse.y += (mouse.targetY - mouse.y) * 0.1;
+            ctx.clearRect(0, 0, width, height);
+            count += 0.03;
+
+            for (let x = gap / 2; x < width; x += gap) {
+                for (let y = gap / 2; y < height; y += gap) {
+                    const wave = Math.sin(x * 0.01 + count) + Math.cos(y * 0.01 + count);
+                    const dx = mouse.x - x;
+                    const dy = mouse.y - y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const maxDist = 200;
+                    let size = 1.2 + wave * 0.4;
+                    let alpha = 0.15 + wave * 0.05;
+                    let color = '255, 255, 255';
+
+                    if (dist < maxDist) {
+                        const factor = (1 - dist / maxDist);
+                        size += factor * 3;
+                        alpha += factor * 0.6;
+                        color = '58, 142, 158';
+                    }
+
+                    ctx.fillStyle = `rgba(${color}, ${Math.min(alpha, 1)})`;
+                    ctx.beginPath();
+                    ctx.arc(x, y, Math.max(0.5, size), 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            requestAnimationFrame(render);
+        }
+        render();
+    </script>
+
+    <!-- Footer -->
+    <footer class="fade-in-7 w-full border-t border-teal-500 bg-slate-900/95 backdrop-blur-md relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div class="md:col-span-7 lg:col-span-8 space-y-4">
+                    <a href="index.html" class="hover-slide inline-block focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <img src="iALogo.svg" alt="iA Logo" class="h-20 w-auto">
+                    </a>
+                    <p class="text-base font-bold text-white uppercase tracking-wider">
+                        Integrity First. Innovation Always. Automation at Scale.
+                    </p>
+                    <blockquote class="text-base text-gray-400 border-l-2 border-teal-500 pl-3 py-0.5">
+                        Building Pathways to Mass Production of UxV for Democratic Partners.
+                    </blockquote>
+                </div>
+                <div class="md:col-span-2 lg:col-span-2 space-y-1">
+                    <span class="block text-base text-teal-500 uppercase tracking-widest font-bold">Location</span>
+                    <p class="text-base text-gray-300">Los Angeles, CA</p>
+                </div>
+                <div class="md:col-span-3 lg:col-span-2 space-y-1">
+                    <span class="block text-base text-teal-500 uppercase tracking-widest font-bold">Contact</span>
+                    <ul class="text-base text-gray-300 space-y-1">
+                        <li><a href="mailto:info@iAutonomy.co" class="hover-slide inline-block hover:text-teal-400">info@iAutonomy.co</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center text-base text-gray-500 gap-4">
+                <p>&copy; 2026 iAutonomy, Inc. All rights reserved.</p>
+                <p class="uppercase">CAGE / SAM Registered Partner</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

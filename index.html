@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iAutonomy, Inc. | Mass Production of UxV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { slate: { 900: '#1A2026' }, teal: { 500: '#3A8E9E' } }, 
+                    fontFamily: { 
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'SF Pro Text', 'Segoe UI', 'sans-serif'], 
+                        mono: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'SF Pro Text', 'Segoe UI', 'sans-serif'] 
+                    } 
+                } 
+            } 
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        /* Staggered Fade-In Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-1 { animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        .fade-in-2 { animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards; opacity: 0; }
+        .fade-in-3 { animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; opacity: 0; }
+        .fade-in-4 { animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards; opacity: 0; }
+
+        @keyframes navPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.85; }
+        }
+        .hover-pulse:hover { animation: navPulse 1s ease-in-out infinite; }
+        
+        /* Hover Interaction */
+        .hover-slide {
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            will-change: transform;
+        }
+        .hover-slide:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-200 font-sans antialiased relative overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Interactive Canvas Background -->
+    <canvas id="wave-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-80"></canvas>
+
+    <!-- Navigation Header (Fade In Step 1) -->
+    <nav class="fade-in-1 border-b-2 border-teal-500 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 font-sans">
+        <div class="max-w-[90rem] mx-auto px-2 sm:px-4">
+            <div class="relative flex items-center h-20">
+                
+                <!-- Logo -->
+                <a href="index.html" class="hover-slide absolute left-0 flex-shrink-0 flex items-center pr-1 sm:pr-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <img src="iALogo.svg" alt="iA Logo" class="h-10 sm:h-12 w-auto">
+                </a>
+
+                <!-- Centered Navigation Links -->
+                <div class="flex items-center justify-center mx-auto gap-2 sm:gap-3 font-sans whitespace-nowrap">
+                    <a href="index.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-500 bg-slate-800/80 rounded text-center">Home</a>
+                    <a href="about.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">About</a>
+                    <a href="marketplace.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Trusted Marketplace</a>
+                    <a href="ops.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Ops+</a>
+                    <a href="automation.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Automation &amp; Production</a>
+                    <a href="team.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">The Team</a>
+                    <a href="more-info.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">More Info</a>
+                    <a href="contact.html" class="hover-slide px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-500 hover:text-white border border-teal-500 hover:bg-teal-500 rounded text-center">Contact</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 flex-grow space-y-16">
+        
+        <!-- Hero Section (Fade In Step 2) -->
+        <header class="fade-in-2 border-b border-gray-800 pb-12 bg-slate-900/60 backdrop-blur-sm p-8 text-center flex flex-col items-center">
+            <div class="flex flex-col items-center justify-center gap-6 mb-8 w-full">
+                <img src="iALogoCropped.svg" alt="iA Logo Large" class="h-64 sm:h-80 w-auto hover-slide mx-auto">
+            </div>
+
+            <p class="text-2xl sm:text-2xl font-bold text-teal-500 uppercase tracking-wide mb-6 leading-snug">
+                Integrity First. Innovation Always. Assurance & Automation at Scale.
+            </p>
+
+            <p class="text-xl text-gray-200 leading-relaxed max-w-4xl mb-8 border-l-4 border-teal-500 pl-4 py-1 mx-auto text-left sm:text-center sm:border-l-0 sm:border-t-4">
+                Building Pathways to Mass Production of UxV for Democratic Partners.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="about.html" class="hover-slide bg-teal-500 text-slate-900 px-6 py-3 text-base font-bold uppercase hover:bg-white inline-block">
+                    About
+                </a>
+                <a href="contact.html" class="hover-slide border border-teal-500 text-teal-500 px-6 py-3 text-base font-bold uppercase hover:bg-teal-500 hover:text-white inline-block">
+                    Contact Us
+                </a>
+            </div>
+        </header>
+
+        <!-- Mission Statement Section with Language Toggle -->
+<section x-data="{ lang: 'en' }" class="fade-in-2 border border-teal-500/40 bg-slate-900/80 p-8 rounded-lg backdrop-blur-md max-w-5xl mx-auto text-left space-y-6">
+    
+    <!-- Language Toggle Buttons -->
+    <div class="flex justify-end gap-2 border-b border-gray-800 pb-4">
+        <button 
+            @click="lang = 'en'" 
+            :class="lang === 'en' ? 'bg-teal-500 text-slate-900' : 'bg-slate-800 text-gray-400 hover:text-white'"
+            class="px-3 py-1 text-xs font-bold uppercase rounded transition-colors duration-200">
+            EN
+        </button>
+        <button 
+            @click="lang = 'zh'" 
+            :class="lang === 'zh' ? 'bg-teal-500 text-slate-900' : 'bg-slate-800 text-gray-400 hover:text-white'"
+            class="px-3 py-1 text-xs font-bold uppercase rounded transition-colors duration-200">
+            繁體中文
+        </button>
+    </div>
+
+    <!-- English Content -->
+    <div x-show="lang === 'en'" class="space-y-6">
+        <h3 class="text-xl sm:text-2xl font-bold text-teal-400 leading-snug">
+            iA is a platform centered on US-Taiwan cooperation, connecting global demand, providing trusted supply chain integration, transactions, and full product lifecycle services.
+        </h3>
+        <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+            We combine Taiwan's industrial strengths in precision manufacturing, electronics, semiconductors, sensors, batteries, communications, and system integration with real market demands in the U.S. and worldwide. We assist suppliers from market entry to transactions, logistics, RMA, localized execution, and end-to-end product lifecycle services—building a more transparent, resilient, and scalable supply chain.
+        </p>
+        <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+            iA collaborates with manufacturers and system providers. We deliver the critical execution layer between supply capacity and market landing—connecting real-world demand, trusted supply, and global execution through Market Access, Trusted Marketplace, Operations &amp; Logistics, AI-Native Intelligence, and Financial Layer solutions.
+        </p>
+    </div>
+
+    <!-- Chinese Content -->
+    <div x-show="lang === 'zh'" x-cloak class="space-y-6">
+        <h3 class="text-xl sm:text-2xl font-bold text-teal-400 leading-snug">
+            iA 是以台美合作為核心、串聯全球需求、提供可信任供應鏈整合、交易、與全產品生命週期服務平台
+        </h3>
+        <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+            我們結合台灣在精密製造、電子、半導體、感測器、電池、通訊與系統整合的產業優勢，串聯美國與全球實際市場需求，協助供應商從市場進入、提供交易，物流、RMA、在地執行與全產品生命週期服務，建立更透明、具韌性且可規模化的供應鏈。
+        </p>
+        <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+            iA 與製造商以及系統供應商合作；我們提供從供應能力到市場落地之間最關鍵的執行層，並透過 Market Access、Trusted Marketplace、Operations &amp; Logistics、AI-Native Intelligence 與 Financial Layer，連結真實需求、可信任供應與全球執行能力。
+        </p>
+    </div>
+
+</section>
+
+        <!-- 3 Pillars Section (Fade In Step 3) -->
+        <section class="fade-in-3 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Left: Trusted Supply Chain -->
+            <div class="hover-slide border border-gray-800 bg-slate-900/80 backdrop-blur-md p-6 hover:border-teal-500/50 flex flex-col justify-between">
+                <div>
+                    <span class="text-base text-teal-500 uppercase tracking-widest block mb-2 font-bold">Sourcing</span>
+                    <h2 class="text-2xl font-bold text-white uppercase tracking-tight mb-4">Trusted Marketplace</h2>
+                    <p class="text-base text-gray-300 leading-relaxed">
+                        Sourcing reliable components, subsystems, and fully integrated solutions through a trusted marketplace and vetted democratic partner networks, securing scalable capability, verified supply, and resilient capacity.
+                    </p>
+                </div>
+                <div class="mt-8 pt-4 border-t border-gray-800/50">
+                    <a href="marketplace.html" class="inline-block text-base font-bold text-teal-500 hover:text-white uppercase">Explore Marketplace &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Middle: Ops+ -->
+            <div class="hover-slide border border-gray-800 bg-slate-900/80 backdrop-blur-md p-6 hover:border-teal-500/50 flex flex-col justify-between">
+                <div>
+                    <span class="text-base text-teal-500 uppercase tracking-widest block mb-2 font-bold">Service</span>
+                    <h2 class="text-2xl font-bold text-white uppercase tracking-tight mb-4">Ops+</h2>
+                    <p class="text-base text-gray-300 leading-relaxed">
+                        Integrated logistics support through strategic partnerships, covering fulfillment, secure shipping, warehousing, inventory, RMA, reverse logistics, technical support, hazmat handling, and scalable global delivery.
+                    </p>
+                </div>
+                <div class="mt-8 pt-4 border-t border-gray-800/50">
+                    <a href="Ops.html" class="inline-block text-base font-bold text-teal-500 hover:text-white uppercase">Explore Ops+ &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Right: Advanced Automation & Production -->
+            <div class="hover-slide border border-gray-800 bg-slate-900/80 backdrop-blur-md p-6 hover:border-teal-500/50 flex flex-col justify-between">
+                <div>
+                    <span class="text-base text-teal-500 uppercase tracking-widest block mb-2 font-bold">Manufacturing</span>
+                    <h2 class="text-2xl font-bold text-white uppercase tracking-tight mb-4">Advanced Automation & Production</h2>
+                    <p class="text-base text-gray-300 leading-relaxed">
+                        Precision focus on engineering, rapid prototyping, and automated production workflows tailored for scaling UxV platforms.
+                    </p>
+                </div>
+                <div class="mt-8 pt-4 border-t border-gray-800/50">
+                    <a href="automation.html" class="inline-block text-base font-bold text-teal-500 hover:text-white uppercase">Explore Production &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Partners Section (Fade In Step 4) -->
+        <section class="fade-in-4 border border-teal-500/40 bg-slate-900/90 p-8 backdrop-blur-md space-y-8">
+            <div class="border-b border-gray-800 pb-4">
+                <span class="text-teal-500 text-sm font-bold uppercase tracking-widest block mb-1">// Strategic Alliances</span>
+                <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight">Strategic Partners & Industry Alignment</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 1. Empirium Card -->
+                <div class="hover-slide border border-gray-800 bg-slate-900/80 p-6 flex flex-col justify-between hover:border-teal-500/50">
+                    <div>
+                        <div class="h-20 flex items-center justify-center mb-6 bg-white p-3 rounded-md border border-gray-200 shadow-sm">
+                            <img src="empirium-wordmark.svg" alt="Empirium Logo" class="h-14 w-auto object-contain max-w-full">
+                        </div>
+                        <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block mb-2">[ Sourcing Partner ]</span>
+                        <h3 class="text-xl font-bold text-white uppercase mb-2">Empirium</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                            Strategic partner specializing in vetted, democratic component intelligence and secure supply chain sourcing for autonomous systems.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800">
+                        <a href="https://empirium.co" target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-bold text-teal-500 hover:text-white uppercase tracking-wider">
+                            Visit Empirium ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. FBD Groups Card -->
+                <div class="hover-slide border border-gray-800 bg-slate-900/80 p-6 flex flex-col justify-between hover:border-teal-500/50">
+                    <div>
+                        <div class="h-20 flex items-center justify-center mb-6 bg-white p-3 rounded-md border border-gray-200 shadow-sm">
+                            <img src="fbdgroups.png" alt="FBD Groups Logo" class="h-14 w-auto object-contain max-w-full">
+                        </div>
+                        <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block mb-2">[ Logistics Partner ]</span>
+                        <h3 class="text-xl font-bold text-white uppercase mb-2">FBD Groups</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                            Operational partner managing international freight forwarding, customs clearance, payment handling, warehousing, inventory, RMA, reverse logistics, technical support, hazmat handling, and scalable global delivery.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800">
+                        <a href="https://www.fbdgroups.com" target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-bold text-teal-500 hover:text-white uppercase tracking-wider">
+                            Visit FBD Groups ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memberships & Industry Affiliations Section (Fade In Step 4) -->
+        <section class="fade-in-4 border border-teal-500/40 bg-slate-900/90 p-8 backdrop-blur-md space-y-8">
+            <div class="border-b border-gray-800 pb-4">
+                <span class="text-teal-500 text-sm font-bold uppercase tracking-widest block mb-1">// Allied Ecosystem</span>
+                <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight">Memberships & Industry Affiliations</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- 1. AUVSI Membership Card -->
+                <div class="hover-slide border border-gray-800 bg-slate-900/80 p-6 flex flex-col justify-between hover:border-teal-500/50">
+                    <div>
+                        <div class="h-20 flex items-center justify-center mb-6 bg-white p-3 rounded-md border border-gray-200 shadow-sm">
+                            <img src="AUVSI-Member.png" alt="AUVSI Member Logo" class="h-14 w-auto object-contain max-w-full">
+                        </div>
+                        <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block mb-2">[ Industry Affiliation ]</span>
+                        <h3 class="text-xl font-bold text-white uppercase mb-2">AUVSI Member</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                            The Association for Uncrewed Vehicle Systems International is the world's largest non-profit organization dedicated to advancing the uncrewed systems and robotics community.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800">
+                        <a href="https://www.auvsi.org" target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-bold text-teal-500 hover:text-white uppercase tracking-wider">
+                            Visit AUVSI ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. UVAI Membership Card -->
+                <div class="hover-slide border border-gray-800 bg-slate-900/80 p-6 flex flex-col justify-between hover:border-teal-500/50">
+                    <div>
+                        <div class="h-20 flex items-center justify-center mb-6 bg-white p-3 rounded-md border border-gray-200 shadow-sm">
+                            <img src="uvai.jpg" alt="UVAI Logo" class="h-14 w-auto object-contain max-w-full">
+                        </div>
+                        <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block mb-2">[ Industry Alliance ]</span>
+                        <h3 class="text-xl font-bold text-white uppercase mb-2">Taiwan Unmanned Vehicle Alliance (UVAI)</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                            台灣無人載具聯盟 — An industrial alliance promoting cross-industry integration, technical standardizations, and global market expansion for Taiwan's autonomous defense and commercial vehicle ecosystem.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800">
+                        <a href="https://www.uvaitw.com/en" target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-bold text-teal-500 hover:text-white uppercase tracking-wider">
+                            Visit UVAI ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. TACCLA Membership Card -->
+                <div class="hover-slide border border-gray-800 bg-slate-900/80 p-6 flex flex-col justify-between hover:border-teal-500/50">
+                    <div>
+                        <div class="h-20 flex items-center justify-center mb-6 bg-white p-3 rounded-md border border-gray-200 shadow-sm">
+                            <img src="TACCLA.png" alt="TACCLA Logo" class="h-14 w-auto object-contain max-w-full">
+                        </div>
+                        <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block mb-2">[ Regional Partner ]</span>
+                        <h3 class="text-xl font-bold text-white uppercase mb-2">TACCLA</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                            Taiwan American Chamber of Commerce Los Angeles 洛杉磯台美商會 — Connecting bilateral commercial opportunities, fostering industrial cooperation, and strengthening trade bridges between Taiwan and the U.S. markets.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800">
+                        <a href="https://taccla.org" target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-bold text-teal-500 hover:text-white uppercase tracking-wider">
+                            Visit TACCLA ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive Canvas Animation -->
+    <script>
+        const canvas = document.getElementById('wave-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        const gap = 32;
+        let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
+        let count = 0;
+
+        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
+        window.addEventListener('mousemove', (e) => { mouse.targetX = e.clientX; mouse.targetY = e.clientY; });
+
+        function render() {
+            mouse.x += (mouse.targetX - mouse.x) * 0.1;
+            mouse.y += (mouse.targetY - mouse.y) * 0.1;
+            ctx.clearRect(0, 0, width, height);
+            count += 0.03;
+
+            for (let x = gap / 2; x < width; x += gap) {
+                for (let y = gap / 2; y < height; y += gap) {
+                    const wave = Math.sin(x * 0.01 + count) + Math.cos(y * 0.01 + count);
+                    const dx = mouse.x - x;
+                    const dy = mouse.y - y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const maxDist = 200;
+                    let size = 1.2 + wave * 0.4;
+                    let alpha = 0.15 + wave * 0.05;
+                    let color = '255, 255, 255';
+
+                    if (dist < maxDist) {
+                        const factor = (1 - dist / maxDist);
+                        size += factor * 3;
+                        alpha += factor * 0.6;
+                        color = '58, 142, 158';
+                    }
+
+                    ctx.fillStyle = `rgba(${color}, ${Math.min(alpha, 1)})`;
+                    ctx.beginPath();
+                    ctx.arc(x, y, Math.max(0.5, size), 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            requestAnimationFrame(render);
+        }
+        render();
+    </script>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-teal-500 bg-slate-900/95 backdrop-blur-md relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div class="md:col-span-7 lg:col-span-8 space-y-4">
+                    <a href="index.html" class="hover-slide inline-block focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <img src="iALogo.svg" alt="iA Logo" class="h-20 w-auto">
+                    </a>
+                    <p class="text-base font-bold text-white uppercase tracking-wider">
+                        Integrity First. Innovation Always. Automation at Scale.
+                    </p>
+                    <blockquote class="text-base text-gray-400 border-l-2 border-teal-500 pl-3 py-0.5">
+                        Building Pathways to Mass Production of UxV for Democratic Partners.
+                    </blockquote>
+                </div>
+                <div class="md:col-span-2 lg:col-span-2 space-y-1">
+                    <span class="block text-base text-teal-500 uppercase tracking-widest font-bold">Location</span>
+                    <p class="text-base text-gray-300">Los Angeles, CA</p>
+                </div>
+                <div class="md:col-span-3 lg:col-span-2 space-y-1">
+                    <span class="block text-base text-teal-500 uppercase tracking-widest font-bold">Contact</span>
+                    <ul class="text-base text-gray-300 space-y-1">
+                        <li><a href="mailto:info@iAutonomy.co" class="hover-slide inline-block hover:text-teal-400">info@iAutonomy.co</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center text-base text-gray-500 gap-4">
+                <p>&copy; 2026 iAutonomy, Inc. All rights reserved.</p>
+                <p class="uppercase">CAGE / SAM Registered Partner</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
