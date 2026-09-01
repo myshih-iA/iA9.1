@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trusted Marketplace | iAutonomy, Inc.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { slate: { 900: '#1A2026' }, teal: { 500: '#3A8E9E' } }, 
+                    fontFamily: { 
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'SF Pro Text', 'Segoe UI', 'sans-serif'], 
+                        mono: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'SF Pro Text', 'Segoe UI', 'sans-serif'] 
+                    } 
+                } 
+            } 
+        }
+    </script>
+    <!-- Alpine.js & Collapse Plugin for smooth accordion slide mechanics -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Staggered Fade-In Classes with Incremental Delays */
+        .fade-in-1, .fade-in-2, .fade-in-3, .fade-in-4, .fade-in-5,
+        .fade-in-6, .fade-in-7, .fade-in-8, .fade-in-9, .fade-in-10 { 
+            animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            opacity: 0; 
+        }
+
+        .fade-in-1  { animation-delay: 0.0s; }
+        .fade-in-2  { animation-delay: 0.1s; }
+        .fade-in-3  { animation-delay: 0.2s; }
+        .fade-in-4  { animation-delay: 0.3s; }
+        .fade-in-5  { animation-delay: 0.4s; }
+        .fade-in-6  { animation-delay: 0.5s; }
+        .fade-in-7  { animation-delay: 0.6s; }
+        .fade-in-8  { animation-delay: 0.7s; }
+        .fade-in-9  { animation-delay: 0.8s; }
+        .fade-in-10 { animation-delay: 0.9s; }
+
+        /* Ultra-Smooth Up & Down Hover Transition */
+        .hover-slide {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            transform: translateY(0);
+            will-change: transform;
+        }
+        .hover-slide:hover {
+            transform: translateY(-8px);
+        }
+
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-200 font-sans antialiased relative overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Interactive Canvas Animation Background -->
+    <canvas id="wave-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-80"></canvas>
+
+    <!-- Navigation Header (Marketplace Page Active) -->
+    <nav class="fade-in-1 border-b-2 border-teal-500 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 font-sans">
+        <div class="max-w-[90rem] mx-auto px-2 sm:px-4">
+            <div class="relative flex items-center h-20">
+                
+                <!-- Logo -->
+                <a href="index.html" class="hover-slide absolute left-0 flex-shrink-0 flex items-center pr-1 sm:pr-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <img src="iALogo.svg" alt="iA Logo" class="h-10 sm:h-12 w-auto">
+                </a>
+
+                <!-- Centered Single-Line Navigation Links -->
+                <div class="flex items-center justify-center mx-auto gap-2 sm:gap-3 font-sans whitespace-nowrap">
+                    <a href="index.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Home</a>
+                    <a href="about.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">About</a>
+                    <a href="marketplace.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-500 bg-slate-800/80 rounded text-center">Trusted Marketplace</a>
+                    <a href="ops.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Ops+</a>
+                    <a href="automation.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Automation &amp; Production</a>
+                    <a href="team.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">The Team</a>
+                    <a href="more-info.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">More Info</a>
+                    <a href="contact.html" class="hover-slide px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-500 hover:text-white border border-teal-500 hover:bg-teal-500 rounded text-center">Contact</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 flex-grow space-y-16 w-full">
+        
+        <!-- Header Section -->
+        <header class="fade-in-2 border-b border-gray-800 pb-8 bg-slate-900/60 backdrop-blur-sm p-8">
+            <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight mb-3 uppercase">
+                Trusted Marketplace
+            </h1>
+            <p class="text-2xl font-bold text-teal-500 uppercase tracking-wide">
+                Component Integrity // End-to-End Logistics // Resilient Production
+            </p>
+        </header>
+
+        <!-- Stacked Layers Section (Permanently Open + Hover Effect) -->
+        <section class="space-y-6 fade-in-3 w-full">
+            <div class="border-b border-gray-800 pb-4">
+                <span class="text-teal-500 text-sm font-bold uppercase tracking-widest">// Operational Framework</span>
+                <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight mt-1">
+                    Supply Chain Layers
+                </h2>
+            </div>
+
+            <div class="space-y-4 w-full">
+                
+                <!-- Layer 1 -->
+                <div class="hover-slide group fade-in-4 w-full border border-teal-500/50 hover:border-teal-500 bg-slate-900/90 backdrop-blur-md overflow-hidden">
+                    <div class="p-6 text-left flex items-center justify-between border-b border-gray-800/80 bg-slate-800/30">
+                        <div class="flex items-center gap-4">
+                            <span class="text-xs font-bold text-slate-900 bg-teal-500 px-2 py-1 uppercase tracking-wider flex-shrink-0">Layer 01</span>
+                            <h3 class="text-xl font-bold text-white uppercase group-hover:text-teal-400 transition-colors duration-300">
+                                Trusted and Curated Marketplace
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-900/50 space-y-3 text-gray-300 leading-relaxed text-base">
+                        <p>
+                            With multiple global alliances and businesses and over hundreds of products across 10 verified categories already onboarded, we facilitate secure transactions while expanding into high-demand areas like AI chips, ASICs, satcom modules, and NTN/LEO connectivity.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Layer 2 -->
+                <div class="hover-slide group fade-in-5 w-full border border-teal-500/50 hover:border-teal-500 bg-slate-900/90 backdrop-blur-md overflow-hidden">
+                    <div class="p-6 text-left flex items-center justify-between border-b border-gray-800/80 bg-slate-800/30">
+                        <div class="flex items-center gap-4">
+                            <span class="text-xs font-bold text-slate-900 bg-teal-500 px-2 py-1 uppercase tracking-wider flex-shrink-0">Layer 02</span>
+                            <h3 class="text-xl font-bold text-white uppercase group-hover:text-teal-400 transition-colors duration-300">
+                                Market Intelligence
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-900/50 text-gray-300 leading-relaxed text-base">
+                        <p>
+                            iA tracks and aggregates demand signals across global, non-governmental, U.S. federal, state, county, and city-level opportunities, including RFIs, RFPs, pilot programs, public safety needs, infrastructure programs, and low-altitude economy applications.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Layer 3 -->
+                <div class="hover-slide group fade-in-6 w-full border border-teal-500/50 hover:border-teal-500 bg-slate-900/90 backdrop-blur-md overflow-hidden">
+                    <div class="p-6 text-left flex items-center justify-between border-b border-gray-800/80 bg-slate-800/30">
+                        <div class="flex items-center gap-4">
+                            <span class="text-xs font-bold text-slate-900 bg-teal-500 px-2 py-1 uppercase tracking-wider flex-shrink-0">Layer 03</span>
+                            <h3 class="text-xl font-bold text-white uppercase group-hover:text-teal-400 transition-colors duration-300">
+                                Financial and Transaction Layer
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-900/50 text-gray-300 leading-relaxed text-base">
+                        <p>
+                            iA supports secure cross-border transactions through supplier and buyer verification, payment coordination, financing support, escrow-style transaction flows, and potential revenue-sharing, JV, or strategic partnership structures.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Layer 4 -->
+                <div class="hover-slide group fade-in-7 w-full border border-teal-500/50 hover:border-teal-500 bg-slate-900/90 backdrop-blur-md overflow-hidden">
+                    <div class="p-6 text-left flex items-center justify-between border-b border-gray-800/80 bg-slate-800/30">
+                        <div class="flex items-center gap-4">
+                            <span class="text-xs font-bold text-slate-900 bg-teal-500 px-2 py-1 uppercase tracking-wider flex-shrink-0">Layer 04</span>
+                            <h3 class="text-xl font-bold text-white uppercase group-hover:text-teal-400 transition-colors duration-300">
+                                AI-Native Supply Intelligence
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-6 bg-slate-900/50 text-gray-300 leading-relaxed text-base">
+                        <p>
+                            iA connects supplier data, demand signals, inventory records, readiness requirements, and global field intelligence to support supplier matching, demand forecasting, compliance screening, stockpile planning, and resilient supply-chain execution.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Strategic Partners Section: Narrowed & Centered Container -->
+        <section class="fade-in-8 max-w-xl mx-auto border border-teal-500/50 bg-slate-900/90 backdrop-blur-md p-8 sm:p-10 space-y-8 w-full">
+            <div class="border-b border-gray-800 pb-4 text-center">
+                <span class="text-teal-500 text-sm font-bold uppercase tracking-widest">// Logistics Network</span>
+                <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight mt-1">
+                    Supply Chain Partner
+                </h2>
+            </div>
+
+            <div class="pt-2">
+                <!-- Partner Card: Empirium -->
+                <a href="https://empirium.co" target="_blank" rel="noopener noreferrer" class="hover-slide group block border border-gray-800 bg-slate-900 p-6 hover:border-teal-500">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold text-teal-500 uppercase tracking-widest">[ Sourcing &amp; Logistics ]</span>
+                        </div>
+                        <div class="h-20 bg-white rounded p-3 flex items-center justify-center mb-5">
+                            <img src="empirium-wordmark.svg" alt="Empirium Logo" class="h-14 w-auto object-contain max-w-full">
+                        </div>
+                        <h3 class="text-xl font-bold text-white uppercase group-hover:text-teal-400 transition-colors duration-300 mb-2">Empirium</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Strategic hardware procurement and logistics partner providing component sourcing architecture alongside streamlined fulfillment, warehousing, and secure payments.
+                        </p>
+                    </div>
+                    <div class="mt-6 flex items-center gap-1 text-xs font-bold text-teal-500 group-hover:text-white transition-colors duration-300 uppercase tracking-wider">
+                        <span>Visit Website</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Canvas Animation -->
+    <script>
+        const canvas = document.getElementById('wave-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        const gap = 32;
+        let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
+        let count = 0;
+
+        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
+        window.addEventListener('mousemove', (e) => { mouse.targetX = e.clientX; mouse.targetY = e.clientY; });
+
+        function render() {
+            mouse.x += (mouse.targetX - mouse.x) * 0.1;
+            mouse.y += (mouse.targetY - mouse.y) * 0.1;
+            ctx.clearRect(0, 0, width, height);
+            count += 0.03;
+
+            for (let x = gap / 2; x < width; x += gap) {
+                for (let y = gap / 2; y < height; y += gap) {
+                    const wave = Math.sin(x * 0.01 + count) + Math.cos(y * 0.01 + count);
+                    const dx = mouse.x - x;
+                    const dy = mouse.y - y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const maxDist = 200;
+                    let size = 1.2 + wave * 0.4;
+                    let alpha = 0.15 + wave * 0.05;
+                    let color = '255, 255, 255';
+
+                    if (dist < maxDist) {
+                        const factor = (1 - dist / maxDist);
+                        size += factor * 3;
+                        alpha += factor * 0.6;
+                        color = '58, 142, 158';
+                    }
+
+                    ctx.fillStyle = `rgba(${color}, ${Math.min(alpha, 1)})`;
+                    ctx.beginPath();
+                    ctx.arc(x, y, Math.max(0.5, size), 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            requestAnimationFrame(render);
+        }
+        render();
+    </script>
+
+    <!-- Footer -->
+    <footer class="fade-in-10 w-full border-t border-teal-500 bg-slate-900/95 backdrop-blur-md relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div class="md:col-span-7 lg:col-span-8 space-y-4">
+                    <a href="index.html" class="hover-slide inline-block focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <img src="iALogo.svg" alt="iA Logo" class="h-20 w-auto">
+                    </a>
+                    <p class="text-base font-bold text-white uppercase tracking-wider">
+                        Integrity First. Innovation Always. Automation at Scale.
+                    </p>
+                    <blockquote class="text-base text-gray-400 border-l-2 border-teal-500 pl-3 py-0.5">
+                        Building Pathways to Mass Production of UxV for Democratic Partners.
+                    </blockquote>
+                </div>
+                <div class="md:col-span-2 lg:col-span-2 space-y-1">
+                    <span class="block text-base text-teal-500 uppercase tracking-widest font-bold">Location</span>
+                    <p class="text-base text-gray-300">Los Angeles, CA</p>
+                </div>
+                <div class="md:col-span-3 lg:col-span-2 space-y-1">
+                    <span class="block text-base text-teal-500 uppercase tracking-widest font-bold">Contact</span>
+                    <ul class="text-base text-gray-300 space-y-1">
+                        <li><a href="mailto:info@iAutonomy.co" class="hover-slide inline-block hover:text-teal-400">info@iAutonomy.co</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center text-base text-gray-500 gap-4">
+                <p>&copy; 2026 iAutonomy, Inc. All rights reserved.</p>
+                <p class="uppercase">CAGE / SAM Registered Partner</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

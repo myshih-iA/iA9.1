@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | iAutonomy, Inc.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { slate: { 900: '#1A2026' }, teal: { 500: '#3A8E9E' } }, 
+                    fontFamily: { 
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'SF Pro Text', 'Segoe UI', 'sans-serif'], 
+                        mono: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'SF Pro Text', 'Segoe UI', 'sans-serif'] 
+                    } 
+                } 
+            } 
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in-1, .fade-in-2, .fade-in-3, .fade-in-4, .fade-in-5,
+        .fade-in-6, .fade-in-7, .fade-in-8, .fade-in-9, .fade-in-10 { 
+            animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            opacity: 0; 
+        }
+
+        .fade-in-1  { animation-delay: 0.0s; }
+        .fade-in-2  { animation-delay: 0.1s; }
+        .fade-in-3  { animation-delay: 0.2s; }
+        .fade-in-4  { animation-delay: 0.3s; }
+        .fade-in-5  { animation-delay: 0.4s; }
+        .fade-in-6  { animation-delay: 0.5s; }
+        .fade-in-7  { animation-delay: 0.6s; }
+        .fade-in-8  { animation-delay: 0.7s; }
+        .fade-in-9  { animation-delay: 0.8s; }
+        .fade-in-10 { animation-delay: 0.9s; }
+
+        /* Smooth Slide Up/Down Hover Interaction */
+        .hover-slide {
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            will-change: transform;
+        }
+        .hover-slide:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Subtle Glow on Image Hover */
+        .image-glow-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .image-glow-card:hover {
+            box-shadow: 0 0 35px -5px rgba(58, 142, 158, 0.25);
+            border-color: rgba(58, 142, 158, 0.6);
+        }
+
+        /* Smooth Accordion Expansion */
+        .accordion-grid {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .accordion-grid.is-open {
+            grid-template-rows: 1fr;
+        }
+
+        .accordion-inner {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-200 font-sans antialiased relative overflow-x-hidden min-h-screen flex flex-col"
+      x-data="{ imageModalOpen: false, modalImage: '', modalTitle: '' }"
+      @keydown.escape.window="imageModalOpen = false">
+
+    <!-- Canvas Animation Background -->
+    <canvas id="wave-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-80"></canvas>
+
+    <!-- Navigation Header -->
+    <nav class="fade-in-1 border-b-2 border-teal-500 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 font-sans">
+        <div class="max-w-[90rem] mx-auto px-2 sm:px-4">
+            <div class="relative flex items-center h-20">
+                
+                <!-- Logo -->
+                <a href="index.html" class="hover-slide absolute left-0 flex-shrink-0 flex items-center pr-1 sm:pr-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <img src="iALogo.svg" alt="iA Logo" class="h-10 sm:h-12 w-auto">
+                </a>
+
+                <!-- Centered Single-Line Navigation Links -->
+                <div class="flex items-center justify-center mx-auto gap-2 sm:gap-3 font-sans whitespace-nowrap">
+                    <a href="index.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Home</a>
+                    <a href="about.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-500 bg-slate-800/80 rounded text-center">About</a>
+                    <a href="marketplace.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Trusted Marketplace</a>
+                    <a href="ops.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Ops+</a>
+                    <a href="automation.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Automation &amp; Production</a>
+                    <a href="team.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">The Team</a>
+                    <a href="more-info.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">More Info</a>
+                    <a href="contact.html" class="hover-slide px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-teal-500 hover:text-white border border-teal-500 hover:bg-teal-500 rounded text-center">Contact</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 flex-grow space-y-16">
+        
+        <!-- Header Section -->
+        <header class="fade-in-2 border-b border-gray-800 pb-8 bg-slate-900/60 backdrop-blur-sm p-8">
+            <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight mb-3 uppercase">
+                About iA
+            </h1>
+            <p class="text-2xl sm:text-3xl font-bold text-teal-500 uppercase tracking-wide">
+                Mission // Vision // Resilient Supply Chains // Democratic Alliances
+            </p>
+        </header>
+
+        <!-- Overview Section -->
+        <section class="hover-slide fade-in-3 border border-gray-800 bg-slate-900/80 backdrop-blur-md p-8 sm:p-10 space-y-6">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white uppercase border-l-4 border-teal-500 pl-4 py-1">
+                Enabling Scalable and Resilient Production for UxV Systems
+            </h2>
+            <p class="text-gray-300 text-lg sm:text-xl leading-relaxed">
+                iA bridges advanced autonomous-system design with industrial-scale execution. Through trusted marketplace access, vetted democratic supply chains, production-ready workflows, and Ops+ services, we help dual-use partners source, scale, and deploy reliable uncrewed platforms with resilient supply chains.
+            </p>
+            <p class="text-gray-300 text-lg leading-relaxed">
+                Our core business is to help buyers source reliable components, subsystems, and integrated solutions through a supplier network verified through strict due diligence and globally coordinated.
+            </p>
+        </section>
+
+        <!-- Strategy Grid: Aggregation & Risk Review -->
+        <section class="fade-in-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="hover-slide border border-gray-800 bg-slate-900/80 p-8 space-y-4">
+                <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block">// Core Model</span>
+                <h3 class="text-2xl font-bold text-white uppercase">Capability & Capacity Aggregation</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    At the center of our model is capability and capacity aggregation. iA identifies what suppliers can build, how much they can produce, how quickly they can scale, and how reliably they can support customers across air, ground, surface, and undersea UxV applications.
+                </p>
+                <p class="text-gray-300 leading-relaxed">
+                    By aggregating these capabilities across Taiwan and other trusted global sources, iA helps customers access a stronger and more flexible supply base.
+                </p>
+            </div>
+
+            <div class="hover-slide border border-gray-800 bg-slate-900/80 p-8 space-y-4">
+                <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block">// Quality Assurance</span>
+                <h3 class="text-2xl font-bold text-white uppercase">Verified Supplier Due Diligence</h3>
+                <p class="text-gray-300 leading-relaxed">
+                    Each supplier and product package is reviewed for company background, ownership structure, sourcing pathway, technical documentation, production capability, capacity, compliance readiness, and supply-chain risk.
+                </p>
+                <p class="text-gray-300 leading-relaxed">
+                    The goal is to provide buyers with more than a product listing — we provide a verified information package that supports procurement, compliance review, logistics planning, and deployment decisions.
+                </p>
+            </div>
+        </section>
+
+        <!-- Operating System & Core Platform Overview (With Integrated Infrastructure Diagram) -->
+        <section class="hover-slide border border-gray-800 bg-slate-900/80 p-8 sm:p-10 space-y-8 fade-in-4">
+            <div class="space-y-6">
+                <span class="text-xs sm:text-sm text-teal-500 font-bold uppercase tracking-widest block">// Integrated Infrastructure</span>
+                <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight">Multi-Layer Operating System</h2>
+                <div class="space-y-4 text-gray-300 text-lg sm:text-xl leading-relaxed">
+                    <p>
+                        iA built a multi-layer supply chain operating system for UxV and autonomous systems. We connect trusted suppliers, verified products, marketplace demand, logistics execution, financial transactions, lifecycle sustainment, and AI-native intelligence into one integrated platform.
+                    </p>
+                    <p>
+                        Our model is designed to solve the <span class="text-white font-bold">“hard middle”</span> of the autonomous systems ecosystem: not only finding products, but making them sourceable, verifiable, deliverable, serviceable, financeable, and scalable across U.S. and allied global markets.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Integrated Diagram Graphic -->
+            <div class="pt-4 border-t border-gray-800/60 max-w-2xl mx-auto">
+                <div @click="modalImage = 'iA Infrastructure Layers.png'; modalTitle = '// iA Infrastructure Architecture'; imageModalOpen = true" 
+                     class="image-glow-card group cursor-pointer border border-gray-800 bg-slate-900/80 backdrop-blur-md p-4 sm:p-6 rounded-lg relative overflow-hidden">
+                    
+                    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 border border-teal-500 bg-slate-900/90 text-teal-400 font-bold uppercase text-xs sm:text-sm tracking-widest shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/>
+                            </svg>
+                            Expand Diagram
+                        </span>
+                    </div>
+
+                    <div class="overflow-hidden rounded">
+                        <img src="iA Infrastructure Layers.png" 
+                             alt="iA Infrastructure Layers Diagram" 
+                             class="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-500 ease-out">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Taiwan & Global Alliances Highlight -->
+        <section class="fade-in-6 border border-teal-500/40 bg-slate-900/90 p-8 backdrop-blur-md space-y-6">
+            <span class="text-teal-500 text-sm font-bold uppercase tracking-widest block">// Strategic Geographic Footprint</span>
+            <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight">Taiwan Foundation & Democratic Alliances</h2>
+            <p class="text-gray-300 text-lg leading-relaxed">
+                Taiwan is a major foundation of iA’s supply-chain network, with strengths in precision manufacturing, electronics, semiconductors, communications, sensors, batteries, PCBs, and system integration. At the same time, iA also works with global democratic and allied suppliers to create redundancy, reduce single-region dependency, and strengthen long-term supply resilience.
+            </p>
+        </section>
+
+        <!-- Product Coverage Infographic / Diagram Section -->
+        <section class="fade-in-6 space-y-6">
+            <div class="border-b border-gray-800 pb-4 flex justify-between items-end">
+                <div>
+                    <span class="text-teal-500 text-sm font-bold uppercase tracking-widest">// Product Matrix</span>
+                    <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight mt-1">
+                        Components & Subsystems for All UxV Platforms
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Expandable Product Listing Image -->
+            <div class="max-w-2xl mx-auto">
+                <div @click="modalImage = 'iA PRODUCT LISTING Updated.svg'; modalTitle = '// iA Marketplace Products & Subsystems'; imageModalOpen = true" 
+                     class="image-glow-card group cursor-pointer border border-gray-800 bg-slate-900/80 backdrop-blur-md p-4 sm:p-6 rounded-lg relative overflow-hidden">
+                    
+                    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 border border-teal-500 bg-slate-900/90 text-teal-400 font-bold uppercase text-xs tracking-widest shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/>
+                            </svg>
+                            Expand Diagram
+                        </span>
+                    </div>
+
+                    <div class="overflow-hidden rounded">
+                        <img src="iA PRODUCT LISTING Updated.svg" 
+                             alt="iA Marketplace Product Listing Diagram" 
+                             class="w-full h-auto object-contain transform group-hover:scale-[1.01] transition-transform duration-500 ease-out">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI-Native Flywheel Section -->
+        <section class="hover-slide border border-teal-500/40 bg-slate-900/90 p-8 sm:p-10 space-y-6 backdrop-blur-md fade-in-8">
+            <span class="text-xs sm:text-sm text-teal-500 font-bold uppercase tracking-widest block">// Dynamic Scaling & Continuous Optimization</span>
+            <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight">The AI-Native Flywheel</h2>
+            <p class="text-gray-300 text-lg sm:text-xl leading-relaxed">
+                Every transaction, supplier interaction, shipment, repair, replacement, market signal, and field update creates new data. iA uses that data to continuously improve the platform and supply-chain decisions.
+            </p>
+
+            <p class="text-gray-300 text-lg sm:text-xl leading-relaxed">
+                These insights help identify which products are in demand, which suppliers are most reliable, where bottlenecks exist, what should be stockpiled, and where alternative sources are needed. The result is a smarter, scalable, and more resilient supply chain platform that improves over time.
+            </p>
+        </section>
+
+        <!-- Stakeholder Value Single Combined Section -->
+        <section class="hover-slide border border-gray-800 bg-slate-900/80 p-8 sm:p-10 space-y-6 fade-in-8">
+            <div class="border-b border-gray-800 pb-4">
+                <span class="text-xs sm:text-sm text-teal-500 font-bold uppercase tracking-widest block">// Ecosystem Impact</span>
+                <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight mt-1">
+                    Maximizing Value for All Stakeholders
+                </h2>
+            </div>
+
+            <!-- Unified Stacked List inside the Container -->
+            <div class="space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 border-l-2 border-teal-500 bg-slate-800/40">
+                    <span class="text-xs sm:text-sm font-mono font-bold text-teal-400 uppercase tracking-wider whitespace-nowrap min-w-[210px]">
+                        [ For Suppliers ]
+                    </span>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        iA provides market access, verified visibility, logistics support, and a path to scale.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 border-l-2 border-teal-500 bg-slate-800/40">
+                    <span class="text-xs sm:text-sm font-mono font-bold text-teal-400 uppercase tracking-wider whitespace-nowrap min-w-[210px]">
+                        [ For Buyers ]
+                    </span>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        iA provides trusted sourcing, faster procurement, clearer product information, and lifecycle support.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 border-l-2 border-teal-500 bg-slate-800/40">
+                    <span class="text-xs sm:text-sm font-mono font-bold text-teal-400 uppercase tracking-wider whitespace-nowrap min-w-[210px]">
+                        [ Logistics &amp; Partners ]
+                    </span>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        iA creates recurring execution volume and data-driven service opportunities.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 border-l-2 border-teal-500 bg-slate-800/40">
+                    <span class="text-xs sm:text-sm font-mono font-bold text-teal-400 uppercase tracking-wider whitespace-nowrap min-w-[210px]">
+                        [ Strategic Partners ]
+                    </span>
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+                        iA builds a scalable platform with marketplace, logistics, data, and supply-chain intelligence value.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memberships & Industry Affiliations Section -->
+        <section class="border border-teal-500/40 bg-slate-900/90 p-8 backdrop-blur-md space-y-8 fade-in-9">
+            <div class="border-b border-gray-800 pb-4">
+                <span class="text-teal-500 text-sm font-bold uppercase tracking-widest block mb-1">// Allied Ecosystem</span>
+                <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight">Memberships & Industry Affiliations</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- 1. AUVSI Membership Card -->
+                <div class="hover-slide border border-gray-800 bg-slate-900/80 p-6 flex flex-col justify-between hover:border-teal-500/50">
+                    <div>
+                        <div class="h-20 flex items-center justify-center mb-6 bg-white p-3 rounded-md border border-gray-200 shadow-sm">
+                            <img src="AUVSI-Member.png" alt="AUVSI Member Logo" class="h-14 w-auto object-contain max-w-full">
+                        </div>
+                        <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block mb-2">[ Industry Affiliation ]</span>
+                        <h3 class="text-xl font-bold text-white uppercase mb-2">AUVSI Member</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                            The Association for Uncrewed Vehicle Systems International is the world's largest non-profit organization dedicated to advancing the uncrewed systems and robotics community.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800">
+                        <a href="https://www.auvsi.org" target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-bold text-teal-500 hover:text-white uppercase tracking-wider items-center gap-1">
+                            Visit AUVSI ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. UVAI Membership Card -->
+                <div class="hover-slide border border-gray-800 bg-slate-900/80 p-6 flex flex-col justify-between hover:border-teal-500/50">
+                    <div>
+                        <div class="h-20 flex items-center justify-center mb-6 bg-white p-3 rounded-md border border-gray-200 shadow-sm">
+                            <img src="uvai.jpg" alt="UVAI Logo" class="h-14 w-auto object-contain max-w-full">
+                        </div>
+                        <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block mb-2">[ Industry Alliance ]</span>
+                        <h3 class="text-xl font-bold text-white uppercase mb-2">Taiwan Unmanned Vehicle Alliance (UVAI)</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                            台灣無人載具聯盟 — An industrial alliance promoting cross-industry integration, technical standardizations, and global market expansion for Taiwan's autonomous defense and commercial vehicle ecosystem.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800">
+                        <a href="https://www.uvaitw.com/en" target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-bold text-teal-500 hover:text-white uppercase tracking-wider items-center gap-1">
+                            Visit UVAI ↗
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. TACCLA Membership Card -->
+                <div class="hover-slide border border-gray-800 bg-slate-900/80 p-6 flex flex-col justify-between hover:border-teal-500/50">
+                    <div>
+                        <div class="h-20 flex items-center justify-center mb-6 bg-white p-3 rounded-md border border-gray-200 shadow-sm">
+                            <img src="TACCLA.png" alt="TACCLA Logo" class="h-14 w-auto object-contain max-w-full">
+                        </div>
+                        <span class="text-xs text-teal-500 font-bold uppercase tracking-widest block mb-2">[ Regional Partner ]</span>
+                        <h3 class="text-xl font-bold text-white uppercase mb-2">TACCLA</h3>
+                        <p class="text-sm text-gray-300 leading-relaxed mb-6">
+                            Taiwan American Chamber of Commerce Los Angeles — Connecting bilateral commercial opportunities, fostering industrial cooperation, and strengthening trade bridges between Taiwan and the U.S. markets.
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-gray-800">
+                        <a href="https://taccla.org" target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-bold text-teal-500 hover:text-white uppercase tracking-wider items-center gap-1">
+                            Visit TACCLA ↗
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Shared Dynamic Fullscreen Expand Modal -->
+    <div x-show="imageModalOpen" 
+         x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-slate-950/90 backdrop-blur-lg"
+         style="display: none;">
+        
+        <div class="absolute inset-0" @click="imageModalOpen = false"></div>
+
+        <div x-show="imageModalOpen"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 scale-95 translate-y-4"
+             x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+             x-transition:leave-end="opacity-0 scale-95 translate-y-4"
+             class="relative z-10 max-w-6xl w-full max-h-[90vh] bg-slate-900 border border-teal-500/50 rounded-lg shadow-2xl flex flex-col overflow-hidden">
+            
+            <div class="flex justify-between items-center px-6 py-4 border-b border-gray-800 bg-slate-900/90">
+                <span class="text-xs sm:text-sm font-mono font-bold text-teal-500 uppercase tracking-widest" x-text="modalTitle"></span>
+                <button @click="imageModalOpen = false" type="button" class="text-gray-400 hover:text-white focus:outline-none p-1 border border-transparent hover:border-teal-500 transition-colors">
+                    <span class="sr-only">Close</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-4 sm:p-8 overflow-auto flex-1 flex items-center justify-center bg-slate-900">
+                <img :src="modalImage" alt="Expanded Diagram" class="max-w-full max-h-[75vh] object-contain rounded">
+            </div>
+
+            <div class="px-6 py-3 border-t border-gray-800/80 bg-slate-900/50 flex justify-between items-center text-xs sm:text-sm text-gray-400 font-mono">
+                <span>Press ESC or click anywhere outside to close</span>
+                <button @click="imageModalOpen = false" class="text-teal-400 hover:text-teal-300 uppercase tracking-wider font-bold">
+                    Close Preview
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Canvas Animation -->
+    <script>
+        const canvas = document.getElementById('wave-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        const gap = 32;
+        let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
+        let count = 0;
+
+        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
+        window.addEventListener('mousemove', (e) => { mouse.targetX = e.clientX; mouse.targetY = e.clientY; });
+
+        function render() {
+            mouse.x += (mouse.targetX - mouse.x) * 0.1;
+            mouse.y += (mouse.targetY - mouse.y) * 0.1;
+            ctx.clearRect(0, 0, width, height);
+            count += 0.03;
+
+            for (let x = gap / 2; x < width; x += gap) {
+                for (let y = gap / 2; y < height; y += gap) {
+                    const wave = Math.sin(x * 0.01 + count) + Math.cos(y * 0.01 + count);
+                    const dx = mouse.x - x;
+                    const dy = mouse.y - y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const maxDist = 200;
+                    let size = 1.2 + wave * 0.4;
+                    let alpha = 0.15 + wave * 0.05;
+                    let color = '255, 255, 255';
+
+                    if (dist < maxDist) {
+                        const factor = (1 - dist / maxDist);
+                        size += factor * 3;
+                        alpha += factor * 0.6;
+                        color = '58, 142, 158';
+                    }
+
+                    ctx.fillStyle = `rgba(${color}, ${Math.min(alpha, 1)})`;
+                    ctx.beginPath();
+                    ctx.arc(x, y, Math.max(0.5, size), 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            requestAnimationFrame(render);
+        }
+        render();
+    </script>
+
+    <!-- Footer -->
+    <footer class="fade-in-10 w-full border-t border-teal-500 bg-slate-900/95 backdrop-blur-md relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div class="md:col-span-7 lg:col-span-8 space-y-4">
+                    <a href="index.html" class="hover-slide inline-block focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <img src="iALogo.svg" alt="iA Logo" class="h-20 w-auto">
+                    </a>
+                    <p class="text-base font-bold text-white uppercase tracking-wider">
+                        Integrity First. Innovation Always. Automation at Scale.
+                    </p>
+                    <blockquote class="text-base text-gray-400 border-l-2 border-teal-500 pl-3 py-0.5">
+                        Building Pathways to Mass Production of UxV for Democratic Partners.
+                    </blockquote>
+                </div>
+                <div class="md:col-span-2 lg:col-span-2 space-y-1">
+                    <span class="block text-base text-teal-500 uppercase tracking-widest font-bold">Location</span>
+                    <p class="text-base text-gray-300">Los Angeles, CA</p>
+                </div>
+                <div class="md:col-span-3 lg:col-span-2 space-y-1">
+                    <span class="block text-base text-teal-500 uppercase tracking-widest font-bold">Contact</span>
+                    <ul class="text-base text-gray-300 space-y-1">
+                        <li><a href="mailto:info@iAutonomy.co" class="hover-slide inline-block hover:text-teal-400">info@iAutonomy.co</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center text-base text-gray-500 gap-4">
+                <p>&copy; 2026 iAutonomy, Inc. All rights reserved.</p>
+                <p class="uppercase">CAGE / SAM Registered Partner</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

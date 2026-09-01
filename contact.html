@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Operations | iAutonomy, Inc.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { slate: { 900: '#1A2026' }, teal: { 500: '#3A8E9E' } }, 
+                    fontFamily: { 
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'SF Pro Text', 'Segoe UI', 'sans-serif'], 
+                        mono: ['-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'SF Pro Text', 'Segoe UI', 'sans-serif'] 
+                    } 
+                } 
+            } 
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Staggered Fade-In Classes with Incremental Delays */
+        .fade-in-1, .fade-in-2, .fade-in-3, .fade-in-4, .fade-in-5,
+        .fade-in-6, .fade-in-7, .fade-in-8, .fade-in-9, .fade-in-10 { 
+            animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            opacity: 0; 
+        }
+
+        .fade-in-1  { animation-delay: 0.0s; }
+        .fade-in-2  { animation-delay: 0.1s; }
+        .fade-in-3  { animation-delay: 0.2s; }
+        .fade-in-4  { animation-delay: 0.3s; }
+        .fade-in-5  { animation-delay: 0.4s; }
+        .fade-in-6  { animation-delay: 0.5s; }
+        .fade-in-7  { animation-delay: 0.6s; }
+        .fade-in-8  { animation-delay: 0.7s; }
+        .fade-in-9  { animation-delay: 0.8s; }
+        .fade-in-10 { animation-delay: 0.9s; }
+
+        /* Ultra-Smooth Up & Down Hover Transition */
+        .hover-slide {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+            transform: translateY(0);
+            will-change: transform;
+        }
+        .hover-slide:hover {
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-gray-200 font-sans antialiased relative overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Interactive Mesh Backdrop Canvas -->
+    <canvas id="wave-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-80"></canvas>
+
+    <!-- Navigation Header (Contact Page Active) -->
+    <nav class="fade-in-1 border-b-2 border-teal-500 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 font-sans">
+        <div class="max-w-[90rem] mx-auto px-2 sm:px-4">
+            <div class="relative flex items-center h-20">
+                
+                <!-- Logo -->
+                <a href="index.html" class="hover-slide absolute left-0 flex-shrink-0 flex items-center pr-1 sm:pr-2 focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <img src="iALogo.svg" alt="iA Logo" class="h-10 sm:h-12 w-auto">
+                </a>
+
+                <!-- Centered Single-Line Navigation Links -->
+                <div class="flex items-center justify-center mx-auto gap-2 sm:gap-3 font-sans whitespace-nowrap">
+                    <a href="index.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Home</a>
+                    <a href="about.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">About</a>
+                    <a href="marketplace.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Trusted Marketplace</a>
+                    <a href="ops.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Ops+</a>
+                    <a href="automation.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">Automation &amp; Production</a>
+                    <a href="team.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">The Team</a>
+                    <a href="more-info.html" class="hover-slide px-2.5 py-1.5 text-xs font-bold uppercase tracking-wide text-gray-300 hover:text-white text-center">More Info</a>
+                    <a href="contact.html" class="hover-slide px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white bg-teal-500 border border-teal-500 rounded text-center">Contact</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 flex-grow space-y-16">
+        
+        <!-- Header Section -->
+        <header class="fade-in-2 border-b border-gray-800 pb-8 bg-slate-900/60 backdrop-blur-sm p-8">
+            <h1 class="text-5xl sm:text-6xl font-extrabold text-white tracking-tight mb-3 uppercase">
+                Contact Operations
+            </h1>
+            <p class="text-2xl font-bold text-teal-500 uppercase tracking-wide">
+                Inquiries // Defense Procurement // Partnerships
+            </p>
+        </header>
+
+        <!-- Contact Form & Confirmation Card Container (Stationary Box) -->
+        <section class="fade-in-3 w-full max-w-2xl border border-gray-800 bg-slate-900/80 backdrop-blur-md p-8 hover:border-teal-500/50 transition-colors duration-300">
+            
+            <!-- Request Banner (Shown dynamically if redirected from PDF request) -->
+            <div id="pdf-request-banner" class="hidden mb-6 p-4 border border-teal-500/50 bg-teal-500/10 text-teal-400 text-sm font-bold uppercase tracking-wider">
+                [ PDF Request Mode ]:<br>Complete the form to request access to the requested document.
+            </div>
+
+            <!-- Custom Confirmation Screen (Hidden by default) -->
+            <div id="success-screen" class="hidden text-center py-8 space-y-6">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-teal-500/20 border border-teal-500 text-teal-400 mb-2">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-extrabold text-white uppercase tracking-tight">Request Submitted</h2>
+                <p class="text-teal-500 font-bold uppercase tracking-wider text-sm">[ TRANSMISSION SUCCESSFUL ]</p>
+                <p class="text-gray-300 text-base max-w-md mx-auto">
+                    Thank you for reaching out. Our team has received your inquiry and will reach back to you shortly.
+                </p>
+                <div class="pt-4">
+                    <button onclick="resetForm()" class="hover-slide inline-block border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-slate-900 px-6 py-2.5 text-sm font-bold uppercase tracking-wider focus:outline-none cursor-pointer">
+                        Send Another Message
+                    </button>
+                </div>
+            </div>
+
+            <!-- Web3Forms Functional Form -->
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                
+                <!-- Web3Forms Access Key -->
+                <input type="hidden" name="access_key" value="39bac698-6b76-4d9a-ad4e-698e7f215b9a">
+
+                <!-- Customization Settings -->
+                <input type="hidden" name="subject" value="New Inquiry from iAutonomy Operations Form">
+                <input type="hidden" name="from_name" value="iAutonomy Website">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-base font-bold text-teal-500 uppercase mb-2">FIRST NAME</label>
+                        <input type="text" name="first_name" required class="w-full bg-slate-900 border border-gray-800 text-white p-3 text-base focus:border-teal-500 focus:outline-none transition-colors" placeholder="John">
+                    </div>
+                    <div>
+                        <label class="block text-base font-bold text-teal-500 uppercase mb-2">LAST NAME</label>
+                        <input type="text" name="last_name" required class="w-full bg-slate-900 border border-gray-800 text-white p-3 text-base focus:border-teal-500 focus:outline-none transition-colors" placeholder="Doe">
+                    </div>
+                </div>
+
+                <!-- Email Address Box -->
+                <div>
+                    <label class="block text-base font-bold text-teal-500 uppercase mb-2">EMAIL ADDRESS</label>
+                    <input type="email" name="email" required class="w-full bg-slate-900 border border-gray-800 text-white p-3 text-base focus:border-teal-500 focus:outline-none transition-colors" placeholder="john.doe@organization.com">
+                </div>
+
+                <div>
+                    <label class="block text-base font-bold text-teal-500 uppercase mb-2">ORGANIZATION / AGENCY</label>
+                    <input type="text" name="organization" class="w-full bg-slate-900 border border-gray-800 text-white p-3 text-base focus:border-teal-500 focus:outline-none transition-colors" placeholder="Defense Logistics / Enterprise">
+                </div>
+                <div>
+                    <label class="block text-base font-bold text-teal-500 uppercase mb-2">MESSAGE</label>
+                    <textarea id="contact-message" name="message" rows="4" required class="w-full bg-slate-900 border border-gray-800 text-white p-3 text-base focus:border-teal-500 focus:outline-none transition-colors" placeholder="Enter inquiry details..."></textarea>
+                </div>
+                <button type="submit" id="submit-btn" class="hover-slide w-full bg-teal-500 text-slate-900 text-base font-bold py-3 uppercase hover:bg-white focus:outline-none cursor-pointer flex items-center justify-center gap-2">
+                    <span id="btn-text">Submit Request</span>
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Script to handle Ajax submission & URL parameter detection -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const docRequested = urlParams.get('doc');
+            const messageBox = document.getElementById('contact-message');
+            const requestBanner = document.getElementById('pdf-request-banner');
+
+            if (docRequested) {
+                requestBanner.classList.remove('hidden');
+                if (docRequested === 'eng') {
+                    messageBox.value = "Requesting access to full PDF document: Trusted Service Infrastructure for the UxV Ecosystem (English Briefing).";
+                } else if (docRequested === 'tw') {
+                    messageBox.value = "Requesting access to full PDF document: iAutonomy 可信任UxV生態系的服務基礎設施 (繁體中文 Briefing).";
+                } else {
+                    messageBox.value = `Requesting access to document: ${docRequested}`;
+                }
+            }
+        });
+
+        const form = document.getElementById('contact-form');
+        const successScreen = document.getElementById('success-screen');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Indicate sending state
+            btnText.textContent = "TRANSMITTING...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    // Hide form & banner, reveal custom success screen
+                    form.classList.add('hidden');
+                    document.getElementById('pdf-request-banner').classList.add('hidden');
+                    successScreen.classList.remove('hidden');
+                } else {
+                    alert(json.message || "Something went wrong. Please try submitting again.");
+                }
+            })
+            .catch(error => {
+                alert("Network error. Please try again later.");
+            })
+            .finally(() => {
+                btnText.textContent = "Submit Request";
+                submitBtn.disabled = false;
+            });
+        });
+
+        function resetForm() {
+            form.reset();
+            successScreen.classList.add('hidden');
+            form.classList.remove('hidden');
+        }
+    </script>
+
+    <!-- Canvas Interactive Wave/Dot Grid Animation -->
+    <script>
+        const canvas = document.getElementById('wave-canvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+        const gap = 32;
+        let mouse = { x: width / 2, y: height / 2, targetX: width / 2, targetY: height / 2 };
+        let count = 0;
+
+        window.addEventListener('resize', () => { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; });
+        window.addEventListener('mousemove', (e) => { mouse.targetX = e.clientX; mouse.targetY = e.clientY; });
+
+        function render() {
+            mouse.x += (mouse.targetX - mouse.x) * 0.1;
+            mouse.y += (mouse.targetY - mouse.y) * 0.1;
+            ctx.clearRect(0, 0, width, height);
+            count += 0.03;
+
+            for (let x = gap / 2; x < width; x += gap) {
+                for (let y = gap / 2; y < height; y += gap) {
+                    const wave = Math.sin(x * 0.01 + count) + Math.cos(y * 0.01 + count);
+                    const dx = mouse.x - x;
+                    const dy = mouse.y - y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    const maxDist = 200;
+                    let size = 1.2 + wave * 0.4;
+                    let alpha = 0.15 + wave * 0.05;
+                    let color = '255, 255, 255';
+
+                    if (dist < maxDist) {
+                        const factor = (1 - dist / maxDist);
+                        size += factor * 3;
+                        alpha += factor * 0.6;
+                        color = '58, 142, 158';
+                    }
+
+                    ctx.fillStyle = `rgba(${color}, ${Math.min(alpha, 1)})`;
+                    ctx.beginPath();
+                    ctx.arc(x, y, Math.max(0.5, size), 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            requestAnimationFrame(render);
+        }
+        render();
+    </script>
+
+    <!-- Footer -->
+    <footer class="fade-in-4 w-full border-t border-teal-500 bg-slate-900/95 backdrop-blur-md relative z-10 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div class="md:col-span-7 lg:col-span-8 space-y-4">
+                    <a href="index.html" class="hover-slide inline-block focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <img src="iALogo.svg" alt="iA Logo" class="h-20 w-auto">
+                    </a>
+                    <p class="text-base font-bold text-white uppercase tracking-wider">
+                        Integrity First. Innovation Always. Automation at Scale.
+                    </p>
+                    <blockquote class="text-base text-gray-400 border-l-2 border-teal-500 pl-3 py-0.5">
+                        Building Pathways to Mass Production of UxV for Democratic Partners.
+                    </blockquote>
+                </div>
+                <div class="md:col-span-2 lg:col-span-2 space-y-1">
+                    <span class="block text-base text-teal-500 uppercase tracking-widest font-bold">Location</span>
+                    <p class="text-base text-gray-300">Los Angeles, CA</p>
+                </div>
+                <div class="md:col-span-3 lg:col-span-2 space-y-1">
+                    <span class="block text-base text-teal-500 uppercase tracking-widest font-bold">Contact</span>
+                    <ul class="text-base text-gray-300 space-y-1">
+                        <li><a href="mailto:info@iAutonomy.co" class="hover-slide inline-block hover:text-teal-400">info@iAutonomy.co</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-6 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center text-base text-gray-500 gap-4">
+                <p>&copy; 2026 iAutonomy, Inc. All rights reserved.</p>
+                <p class="uppercase">CAGE / SAM Registered Partner</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
